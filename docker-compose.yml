@@ -1,0 +1,11 @@
+version: "3"
+services:
+  vms-db:
+    container_name: imdb-db
+    image: "postgres:14"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=imdb
+      - POSTGRES_PASSWORD=imdb
+      - POSTGRES_DB=imdb
