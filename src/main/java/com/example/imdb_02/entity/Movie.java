@@ -11,9 +11,11 @@ import lombok.NoArgsConstructor;
 @Table(name="movies")
 @Entity
 public class Movie {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
 
 }
