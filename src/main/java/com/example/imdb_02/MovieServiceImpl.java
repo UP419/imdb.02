@@ -6,6 +6,8 @@ import com.example.imdb_02.service.MovieService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -20,5 +22,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void removeMovie(Long id) {
         movieRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return movieRepo.findAll();
     }
 }

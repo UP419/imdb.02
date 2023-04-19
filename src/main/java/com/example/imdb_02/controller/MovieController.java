@@ -29,4 +29,9 @@ public class MovieController {
     public void delete(@PathVariable Long id) {
         movieService.removeMovie(id);
     }
+
+    @GetMapping("/all")
+    public List<Movie> getAllMovies(){
+        return movieService.getAllMovies();
+    }
 }
