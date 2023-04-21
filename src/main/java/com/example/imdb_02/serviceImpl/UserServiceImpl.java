@@ -4,9 +4,9 @@ import com.example.imdb_02.entity.User;
 import com.example.imdb_02.repo.UserRepo;
 import com.example.imdb_02.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -22,6 +22,8 @@ public class UserServiceImpl implements UserService {
         if(userRepo.existsByUserName(user.getUserName())){
             throw new Exception("User already exists");
         }
+        BCryptPasswordEncoder tmp = new BCryptPasswordEncoder();
+        user.setPassword(tmp.encode(user.getPassword()));
         userRepo.save(user);
     }
 
