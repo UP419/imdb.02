@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface MovieService {
 
-    void addMovies(Movie movie);
+    void addMovies(Movie movie) throws RuntimeException;
 
     void removeMovie(Long id);
 

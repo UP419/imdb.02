@@ -14,8 +14,15 @@ public class MovieServiceImpl implements MovieService {
 
     private final MovieRepo movieRepo;
 
+    private boolean checkIfMovieAlreadyExists(Movie movie){
+        return movieRepo.existsMovieByName(movie.getName());
+    }
+
     @Override
-    public void addMovies(Movie movie) {
+    public void addMovies(Movie movie) throws RuntimeException {
+        if(checkIfMovieAlreadyExists(movie)){
+            throw new RuntimeException("Movie already exists");
+        }
         movieRepo.save(movie);
     }
 

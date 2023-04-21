@@ -17,7 +17,7 @@ public class MovieController {
     private final MovieService movieService;
 
     @PostMapping("/add")
-    public ResponseEntity<Movie> add(@RequestBody Movie movie){
+    public ResponseEntity<Movie> add(@RequestBody Movie movie) throws RuntimeException {
         movieService.addMovies(movie);
         return new ResponseEntity<>(movie, HttpStatus.OK);
     }
