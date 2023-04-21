@@ -1,4 +1,4 @@
-package com.example.imdb_02;
+package com.example.imdb_02.serviceImpl;
 
 import com.example.imdb_02.entity.Movie;
 import com.example.imdb_02.repo.MovieRepo;
