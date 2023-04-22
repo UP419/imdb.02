@@ -1,5 +1,6 @@
 package com.example.imdb_02.serviceImpl;
 
+import com.example.imdb_02.customException.CustomException;
 import com.example.imdb_02.entity.Movie;
 import com.example.imdb_02.repo.MovieRepo;
 import com.example.imdb_02.service.MovieService;
@@ -19,7 +20,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void addMovies(Movie movie) throws RuntimeException {
+    public void addMovies(Movie movie) throws CustomException {
         if(checkIfMovieAlreadyExists(movie)){
             throw new RuntimeException("Movie already exists");
         }
@@ -27,7 +28,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void removeMovie(Long id) {
+    public void removeMovie(Long id) throws CustomException {
+        if(!movieRepo.existsById(id)){
+            throw new CustomException("Movie does not exist");
+        }
         movieRepo.deleteById(id);
     }
 
