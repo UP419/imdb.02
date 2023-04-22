@@ -13,5 +13,7 @@ public interface MovieService {
 
     void removeMovie(Long id) throws CustomException;
 
+    void updateMovie(Long id, Movie movie) throws CustomException;
+
     List<Movie> getAllMovies();
 }
