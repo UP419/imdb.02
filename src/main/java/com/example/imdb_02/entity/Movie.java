@@ -9,10 +9,11 @@ import lombok.*;
 @Data
 @Table(name="movies")
 @Entity
+@SequenceGenerator(name="movie_seq", sequenceName="movie_seq", allocationSize=1, initialValue=1)
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="movie_seq")
     private Long id;
 
     @Column(nullable = false)
