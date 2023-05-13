@@ -1,23 +1,23 @@
-import {useEffect, useState} from "react";
 import "./Movies.css";
+import useFetch from "../../hooks/useFetch.tsx";
+
+interface Movie {
+    id: number
+    name: string
+    releaseYear: number
+}
 
 const Movies = () => {
-    const url: string = "http://localhost:8080/movie/all";
-    const [movies, setMovies] = useState([]);
-
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setMovies(data))
-            .catch(error => console.log(error));
-    }, [])
+    const url: string = "http://localhost:8080/movies/all";
+    const [data, errorMessage] = useFetch(url);
 
     return (
         <div className={"movies-container"}>
-            {movies.map(movie => (
-                <div key={movie?.id} className={"single-movie-container"}>
-                    <h1>{movie?.name}</h1>
-                    <p>Release Year: {movie?.releaseYear}</p>
+            {errorMessage && <h2 className={"errorMessage"}>Failed to fetch data!</h2>}
+            {data && data.map((movie: Movie) => (
+                <div key={movie.id} className={"single-movie-container"}>
+                    <h1>{movie.name}</h1>
+                    <p>Release Year: {movie.releaseYear}</p>
                 </div>
             ))}
         </div>
