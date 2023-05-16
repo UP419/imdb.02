@@ -1,12 +1,12 @@
-import "./LoginPage.css";
 import {useState} from "react";
+import "./Register.css"
 
 // interface User {
 //     username: string;
 //     password: string;
 // }
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -37,10 +37,18 @@ const LoginPage = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
+                <div>
+                    <input
+                        placeholder={"Repeat Password"}
+                        type="text"
+
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
                 <button type="submit" className={"login-button"}>Login</button>
             </form>
         </div>
     )
 }
 
-export default LoginPage;
+export default RegisterPage;
