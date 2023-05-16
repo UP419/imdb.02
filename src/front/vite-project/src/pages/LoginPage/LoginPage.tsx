@@ -12,27 +12,29 @@ const LoginPage = () => {
     }
 
     return (
-        <form className = "login-container" onSubmit={handleLogin}>
-            <div>
-                <label htmlFor="username">UserName: </label>
-                <input className="login-form"
-                    type = "text"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUserame(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password: </label>
-                <input
-                    type = "text"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button type="submit">Login</button>
-        </form>
+        <div className={"login-form-container"}>
+            <form className="login-form" onSubmit={handleLogin}>
+                <div>
+                    <input
+                        placeholder={"Username"}
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUserame(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <input
+                        placeholder={"Password"}
+                        type="text"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button type="submit" className={"login-button"}>Login</button>
+            </form>
+        </div>
     )
 }
 
