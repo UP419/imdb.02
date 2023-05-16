@@ -1,7 +1,11 @@
 .homepage-container {
     width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url('./image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
