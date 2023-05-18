@@ -26,6 +26,7 @@ const LoginPage = () => {
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required={true}
                     />
                 </div>
                 <div>
@@ -35,6 +36,7 @@ const LoginPage = () => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required={true}
                     />
                 </div>
                 <button type="submit" className={"login-button"}>Login</button>

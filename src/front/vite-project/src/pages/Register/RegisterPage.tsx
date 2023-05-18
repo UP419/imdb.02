@@ -32,6 +32,7 @@ const RegisterPage = () => {
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required={true}
                     />
                 </div>
                 <div>
@@ -41,6 +42,7 @@ const RegisterPage = () => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required={true}
                     />
                 </div>
                 <div>
@@ -50,6 +52,7 @@ const RegisterPage = () => {
                         id="repeatedPassword"
                         value={repeatedPassword}
                         onChange={(e) => setRepeatedPassword(e.target.value)}
+                        required={true}
                     />
                 </div>
                 <h2>{ correctPasswords && "Passwords do not match"}</h2>
