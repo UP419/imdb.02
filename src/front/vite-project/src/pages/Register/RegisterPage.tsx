@@ -10,16 +10,20 @@ const RegisterPage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repeatedPassword, setRepeatedPassword] = useState('')
-    const [correctPasswords, setCorrectPasswords] = useState(false)
+    const [incorrectPasswords, setIncorrectPasswords] = useState(false)
     const [renderPage, setRenderPage] = useState(false)
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setCorrectPasswords(password != repeatedPassword);
-        setUsername('')
-        setPassword('')
-        setRepeatedPassword('')
-        setRenderPage(!renderPage)
+        setIncorrectPasswords(password != repeatedPassword);
+        if(incorrectPasswords){
+            window.location.href = 'movies/all';
+        }else {
+            setUsername('')
+            setPassword('')
+            setRepeatedPassword('')
+            setRenderPage(!renderPage)
+        }
     }
 
     return (
@@ -55,7 +59,7 @@ const RegisterPage = () => {
                         required={true}
                     />
                 </div>
-                <h2>{ correctPasswords && "Passwords do not match"}</h2>
+                <h2>{ incorrectPasswords && "Passwords do not match"}</h2>
                 <button type="submit" className={"login-button"}>Login</button>
             </form>
         </div>

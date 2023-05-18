@@ -14,6 +14,7 @@ const LoginPage = () => {
         e.preventDefault();
         setUsername('')
         setPassword('')
+        window.location.href = 'movies/all';
     }
 
     return (
