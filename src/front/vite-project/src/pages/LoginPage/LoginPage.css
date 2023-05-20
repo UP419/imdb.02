@@ -1,15 +1,13 @@
 .login-form-container {
     width: 100vw;
+    text-align: center;
+}
+
+.login-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-align: center;
-}
-
-.login-container {
-    border: 5px solid white;
-    padding: 10px;
 }
 
 input {
