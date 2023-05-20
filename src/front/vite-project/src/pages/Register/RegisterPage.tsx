@@ -1,5 +1,5 @@
 import {useState} from "react";
-import "./Register.css"
+import "./RegisterPage.css"
 
 // interface User {
 //     username: string;
@@ -11,26 +11,24 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('')
     const [repeatedPassword, setRepeatedPassword] = useState('')
     const [incorrectPasswords, setIncorrectPasswords] = useState(false)
-    const [renderPage, setRenderPage] = useState(false)
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIncorrectPasswords(password != repeatedPassword);
-        if(incorrectPasswords){
+        const isIncorrectPasswords = password != repeatedPassword
+        setIncorrectPasswords(isIncorrectPasswords);
+        if(!isIncorrectPasswords){
             window.location.href = 'movies/all';
         }else {
             setUsername('')
             setPassword('')
             setRepeatedPassword('')
-            setRenderPage(!renderPage)
         }
     }
 
     return (
         <div className={"login-form-container"}>
             <form className="login-form" onSubmit={handleLogin}>
-                <div>
-                    <input
+                    <input className="input-form"
                         placeholder={"Username"}
                         type="text"
                         id="username"
@@ -38,9 +36,7 @@ const RegisterPage = () => {
                         onChange={(e) => setUsername(e.target.value)}
                         required={true}
                     />
-                </div>
-                <div>
-                    <input
+                    <input className="input-form"
                         placeholder={"Password"}
                         type="text"
                         id="password"
@@ -48,9 +44,7 @@ const RegisterPage = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         required={true}
                     />
-                </div>
-                <div>
-                    <input
+                    <input className="input-form"
                         placeholder={"Repeat Password"}
                         type="text"
                         id="repeatedPassword"
@@ -58,8 +52,7 @@ const RegisterPage = () => {
                         onChange={(e) => setRepeatedPassword(e.target.value)}
                         required={true}
                     />
-                </div>
-                <h2>{ incorrectPasswords && "Passwords do not match"}</h2>
+                    {incorrectPasswords && <h2>Passwords do not match</h2>}
                 <button type="submit" className={"login-button"}>Login</button>
             </form>
         </div>
